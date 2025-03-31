@@ -9,6 +9,7 @@
 #define DF_RX 10
 #define DF_TX 11
 #define NUM_LEDS 18
+#define BUSY_PIN 9 //add function to not recognize button press when playing
 
 // Initialize software serial on pins 10 and 11
 SoftwareSerial mySoftwareSerial(DF_RX, DF_TX);  // RX, TX
@@ -31,7 +32,7 @@ void start_player() {
   }
   Serial.println(F("DFPlayer Mini module initialized!"));
   delay(500);
-  myDFPlayer.volume(20);
+  myDFPlayer.volume(20);//Volume 0-30
   myDFPlayer.play(1); // Play file 0001.mp3 on startup
 }
 
