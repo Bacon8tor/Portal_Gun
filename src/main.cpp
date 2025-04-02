@@ -3,7 +3,7 @@
 #include "FastLED.h"
 
 // PINS
-#define LED_PIN 2
+#define LED_PIN 6
 #define ORANGE_BUTTON 3
 #define BLUE_BUTTON 4
 #define DF_RX 10
@@ -28,11 +28,12 @@ void start_player() {
     Serial.println(F("Not initialized:"));
     Serial.println(F("1. Check the DFPlayer Mini connections"));
     Serial.println(F("2. Insert an SD card"));
-    while (true);
+    //while (true);
+    return;
   }
   Serial.println(F("DFPlayer Mini module initialized!"));
   delay(500);
-  myDFPlayer.volume(20);//Volume 0-30
+  myDFPlayer.volume(30);//Volume 0-30
   myDFPlayer.play(1); // Play file 0001.mp3 on startup
 }
 
@@ -61,7 +62,7 @@ void pulse_effect(CRGB color) {
 }
 
 void idle_flicker() {
-  int flickerBrightness = random(100, 150); // Random flicker range
+  int flickerBrightness = random(125, 200); // Random flicker range
   FastLED.setBrightness(flickerBrightness);
   set_leds(currentColor);
   delay(100);
